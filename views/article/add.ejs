@@ -1,0 +1,79 @@
+<% include ../header.ejs %>
+
+
+<div>
+    <form role="form" method="post" action="/article/add" autocomplete="off">
+        <div class="form-group">
+
+            <div>
+                <h4>标题：</h4>
+                <input class="form-control" type="text" name="title" placeholder="请输入标题"/>
+                <br>
+            </div>
+
+            <div>
+                <h4>内容：</h4>
+                <textarea class="form-control" rows="25" name="imageData" id="summernote">
+
+                </textarea>
+                <br/>
+            </div>
+
+            <div>
+                <button class="btn btn-primary" type="submit">发表</button>
+                <button class="btn btn-primary" type="button" id="resetButton">重置</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+
+<script>
+    $('#summernote').summernote({
+        lang: 'zh-CN',
+        placeholder: '请输入正文',
+        minHeight: 450,
+        toolbar: [
+            ['style', ['bold', 'italic', 'underline', 'clear']],  //字体粗体、字体斜体、字体下划线、字体格式清除
+            ['font', ['strikethrough', 'superscript', 'subscript']],  //字体删除线、字体上标、字体下标
+            ['para', ['ul', 'ol']], //无序列表、有序列表对齐方式
+            ['link', ['link']],  //插入链接
+            ['picture', ['picture']],   //插入图片
+            ['fullscreen', ['fullscreen']], //全屏
+        ],
+        callbacks: {
+            onImageUpload: function (files, editor, $editable) {
+                for (let i = 0; i < files.length; i++) {
+                    sendFile(files[i], editor, $editable);
+                }
+
+                function sendFile(file, editor, $editable) {
+                    var data = new FormData();
+                    data.append('imageData', file);
+                    $.ajax({
+                        data: data,
+                        type: 'POST',
+                        url: '/uploads',
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        dataType: "JSON",
+                        success: function (data) {
+                            var imgNode = document.createElement("img");
+                            //读取后台返回的图片url
+                            imgNode.src = data.msg;
+                            $('#summernote').summernote('insertNode', imgNode);
+                            alert('上传成功');
+                        },
+                        error: function () {
+                            alert('上传失败');
+                        }
+                    })
+                }
+            },
+        },
+    })
+</script>
+
+<% include ../footer.ejs %>

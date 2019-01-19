@@ -1,0 +1,30 @@
+<% include ../header.ejs %>
+
+
+<div>
+    <form method="post" autocomplete="off" action="/article/update?id=<%= itemOne.id %>">
+        <div class="form-group">
+
+            <div>
+                <h4>标题：</h4>
+                <input class="form-control" type="text" name="title" value="<%= itemOne.title %>"/>
+                <br/>
+            </div>
+
+            <div>
+                <h4>内容：</h4>
+                <textarea class="form-control" rows="25" name="content" id="summernote"><%= itemOne.content %></textarea>
+                <br/>
+            </div>
+
+            <div>
+                <button class="btn btn-primary" type="submit">提交编辑</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+
+<% include ../footer.ejs %>
+

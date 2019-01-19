@@ -1,0 +1,59 @@
+<% include ../header.ejs %>
+
+
+<form class="form-group" method="post" action="/picture/add">
+    <input id="imageData" name="imageData" type="file" multiple class="file-loading">
+    <input type="submit" value="提交">
+</form>
+
+
+<script>
+
+    $(document).on('ready', function () {
+        $("#imageData").fileinput({
+            uploadUrl: '/uploads',  //上传地址
+            //  uploadUrl: 'http://localhost:3000/picture/add',  //上传地址
+            language: 'zh',      //显示中文
+            uploadAsync: true,   //异步上传
+            showUpload: true,   //是否显示“上传”按钮
+            showRemove: true,   //是否显示“移除”按钮
+            showCaption: true,   //是否显示文件标题，即“选择”按钮左侧input框
+            showPreview: true,   //是否显示预览
+            dropZoneEnabled: true,  //是否显示拖拽区
+            maxFileSize: 0,      //限制图片大小（单位KB） 为0则不限制大小
+            maxFileCount: 9,     //允许同时上传的最大数量
+            allowedPreviewTypes: ['image'],   //支持的文件类型，如image、video、text...
+            allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif'], //可支持的图片后缀名
+            layoutTemplates :{
+                //actionDelete:'', //去除上传预览的缩略图中的删除图标
+                actionUpload:'',//去除上传预览缩略图中的上传图片；
+                actionZoom:''   //去除上传预览缩略图中的查看详情预览的缩略图标。
+            },
+        }).on('fileuploaded',function (event, data, previewId, index) {
+          //  $('.kv-file-content').val('');
+
+
+            $.ajax({
+                data: data,
+                type: 'POST',
+                url: '/picture/add',
+                cache: false,
+                contentType: false,
+                processData: false,
+                //dataType: "JSON",
+                success:function (data) {
+
+                },
+                error:function () {
+                    alert('上传失败');
+                }
+
+            })
+
+        })
+    });
+
+</script>
+
+
+<% include ../footer.ejs %>

@@ -1,0 +1,46 @@
+<% include ../header.ejs %>
+
+
+<div>
+    <div>
+        <% if ( itemOne )  {
+            function getNowFormatDate() {
+                var myDate = itemOne.releaseDate;
+                var year = myDate.getFullYear();
+                var month = myDate.getMonth() + 1;
+                var date = myDate.getDate();
+                var hour = myDate.getHours();
+                var min = myDate.getMinutes();
+                var sec = myDate.getSeconds();
+                if (month >= 1 && month <= 9) month = '0' + month;
+                if (date >= 1 && date <= 9) date = '0' + date;
+                if (hour >= 0 && hour <= 9) hour = '0' + hour;
+                if (min >= 0 && min <= 9) min = '0' + min;
+                if (sec >= 0 && sec <= 9) sec = '0' + sec;
+                var toDay = year + '-' + month + '-' + date + ' ' + hour + ':' + min + ':' + sec;
+                return toDay;
+            } %>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="panel-title">
+                    <%= itemOne.title %>
+                    <a class="article-edit" href="/article/update?id=<%= itemOne.id %>">编辑</a>
+                </h1>
+            </div>
+            <div class="panel-body">
+                <span><%- itemOne.content %></span>
+                <span class="article-author">
+                        <span>作者：</span><span><%= itemOne.author %></span><br>
+                        <span>发布时间：</span><span><%= getNowFormatDate() %></span>
+                </span>
+            </div>
+        </div>
+        <% } %>
+
+    </div>
+</div>
+
+
+<% include ../footer.ejs %>
+

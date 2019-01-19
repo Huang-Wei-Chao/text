@@ -1,0 +1,55 @@
+.article-author {
+  margin-top: 40px;
+  float: right;
+  font-size: 12px;
+  line-height: 20px; }
+
+.article-edit {
+  float: right;
+  font-size: 15px;
+  line-height: 20px; }
+
+.list-group-font {
+  font-weight: bold;
+  font-size: 23px; }
+
+.media-img-arti-list {
+  margin: 20px 0;
+  padding: 20px; }
+
+.hidden-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; }
+
+.index-box {
+  text-align: center;
+  margin-top: 100px; }
+  .index-box p {
+    font-size: 2em; }
+
+.reg-log {
+  margin: 200px 300px;
+  height: 500px;
+  width: 503px; }
+
+.reg-log-box {
+  height: 300px;
+  width: 503px; }
+
+.input-group-box {
+  margin: 30px 0px; }
+
+.input-box {
+  width: 200px;
+  height: 20px; }
+
+.span-msg {
+  font-size: 1em;
+  line-height: 46px;
+  position: fixed;
+  padding-left: 5px; }
+
+/*# sourceMappingURL=article.css.map */

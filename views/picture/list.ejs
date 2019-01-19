@@ -1,0 +1,29 @@
+<% include ../header.ejs %>
+
+
+<div style="padding-bottom: 20px">
+    <a href="/picture/add"><input class="btn btn-primary" type="button" value="发布新图集"></a>
+</div>
+
+
+<div class="row">
+    <%
+    for (let i=0;i<imagesItemList.length;i++){
+    %>
+
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <a href="/picture/detail/<%= imagesItemList[i].id %>">
+                <img src="../images/2.jpg"  alt="...">
+                <!--<div class="caption">-->
+                    <!--<h4 class="center"></h4>-->
+                <!--</div>-->
+            </a>
+        </div>
+    </div>
+
+    <% } %>
+</div>
+
+
+<% include ../footer.ejs %>

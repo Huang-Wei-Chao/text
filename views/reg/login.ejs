@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel='stylesheet' href='/stylesheets/article.css'/>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="../javascripts/remember.js"></script>
+</head>
+<body>
+<div class="reg-log">
+    <%- message %>
+    <form method="post" action="/reg/login" id="loginForm" autocomplete="off">
+
+        <% if (typeof (error) !== "undefined" && error){ %>
+        <p style="color: red"><%= error %></p>
+        <% } %>
+
+        <div class="input-group input-group-lg input-group-box">
+            <span class="input-group-addon">账　　号：</span>
+            <input type="text" class="form-control input-box"
+                   name="userName" id="userName" placeholder="请输入用户名">
+        </div>
+
+        <div class="input-group input-group-lg input-group-box">
+            <span class="input-group-addon">密　　码：</span>
+            <input type="password" class="form-control input-box"
+                   name="passWord" id="passWord" placeholder="请输入密码">
+        </div>
+
+        <div class="input-group input-group-lg input-group-box">
+            <span><input type="checkbox" id="remember">记住密码</span>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">登录</button>
+            <a href="/reg/register"><input type="button" class="btn btn-primary" value="还没有账号，去注册"></a>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
+
